@@ -1,9 +1,9 @@
-package com.jolszewski.login;
+package com.jolszewski.logincounter;
 
 import jakarta.persistence.*;
 
 @Entity(name = "user_login")
-class UserLogin {
+class LoginRequest {
 
     @Id
     @Column(name = "LOGIN", nullable = false)
@@ -12,9 +12,11 @@ class UserLogin {
     @Column(name = "REQUEST_COUNT")
     private int requestCount;
 
-    public UserLogin() {}
+    public LoginRequest() {
+        this.requestCount = 0;
+    }
 
-    public UserLogin(String login) {
+    public LoginRequest(String login) {
         this.login = login;
         this.requestCount = 0;
     }

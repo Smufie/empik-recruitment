@@ -1,4 +1,4 @@
-package com.jolszewski.user;
+package com.jolszewski.github;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
+public class GithubUserDto {
     @JsonProperty("id")
     Long id;
     @JsonProperty("login")
