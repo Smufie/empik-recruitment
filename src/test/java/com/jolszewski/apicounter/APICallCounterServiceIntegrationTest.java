@@ -20,7 +20,7 @@ public class APICallCounterServiceIntegrationTest {
 
     @Test
     void shouldCreateNewLoginRequestWhenItDoesNotExist() {
-        apiCallCounterService.callOccurred("test");
+        apiCallCounterService.callOccurred("testLogin");
         Optional<APICallCounter> testLogin = apiCallCounterRepository.findById("test");
         assertTrue(testLogin.isPresent());
         assertEquals(1, testLogin.get().getRequestCount());
@@ -28,8 +28,8 @@ public class APICallCounterServiceIntegrationTest {
 
     @Test
     void shouldIncrementRequestCount() {
-        apiCallCounterService.callOccurred("increment-test");
-        apiCallCounterService.callOccurred("increment-test");
+        apiCallCounterService.callOccurred("testLogin1");
+        apiCallCounterService.callOccurred("testLogin1");
         Optional<APICallCounter> testLogin = apiCallCounterRepository.findById("increment-test");
         assertTrue(testLogin.isPresent());
         assertEquals(2, testLogin.get().getRequestCount());
