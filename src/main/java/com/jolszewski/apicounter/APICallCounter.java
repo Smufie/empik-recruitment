@@ -2,6 +2,10 @@ package com.jolszewski.apicounter;
 
 import jakarta.persistence.*;
 
+/**
+ * Entity representing amount of API calls.
+ * We suppose that this entity is created only after successful API call occurred.
+ */
 @Entity(name = "user_login")
 class APICallCounter {
 
@@ -12,10 +16,18 @@ class APICallCounter {
     @Column(name = "REQUEST_COUNT")
     private int requestCount;
 
+    /**
+     * Default constructor which sets request count to 1.
+     * It's not suggested to use this constructor because login should never be set to null.
+     */
     public APICallCounter() {
         this.requestCount = 1;
     }
 
+    /**
+     * Suggested constructor, after successful API call.
+     * @param login Login of user, which API was called for.
+     */
     public APICallCounter(String login) {
         this.login = login;
         this.requestCount = 1;
