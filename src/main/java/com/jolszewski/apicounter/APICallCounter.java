@@ -1,9 +1,9 @@
-package com.jolszewski.logincounter;
+package com.jolszewski.apicounter;
 
 import jakarta.persistence.*;
 
 @Entity(name = "user_login")
-class LoginRequest {
+class APICallCounter {
 
     @Id
     @Column(name = "LOGIN", nullable = false)
@@ -12,13 +12,13 @@ class LoginRequest {
     @Column(name = "REQUEST_COUNT")
     private int requestCount;
 
-    public LoginRequest() {
-        this.requestCount = 0;
+    public APICallCounter() {
+        this.requestCount = 1;
     }
 
-    public LoginRequest(String login) {
+    public APICallCounter(String login) {
         this.login = login;
-        this.requestCount = 0;
+        this.requestCount = 1;
     }
 
     public String getLogin() {
@@ -38,6 +38,6 @@ class LoginRequest {
     }
 
     public void incrementRequestCount() {
-        this.requestCount++;
+        setRequestCount(getRequestCount() + 1);
     }
 }

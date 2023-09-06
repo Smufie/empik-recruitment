@@ -4,6 +4,7 @@ import com.jolszewski.github.GithubUserDto;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +24,8 @@ public class UserController {
             GithubUserDto user = userService.getUser(login);
             return ResponseEntity.ok(user);
         } catch (Exception e) {
-            logger.error("Could not obtain user because of: " + e.getMessage());
-            return ResponseEntity.badRequest();
+            logger.error("Could not obtain user.", e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }
